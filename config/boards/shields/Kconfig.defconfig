@@ -1,0 +1,15 @@
+
+if SHIELD_SHERIFF_LEFT
+
+config ZMK_KEYBOARD_NAME
+    default "Sheriff"
+
+config ZMK_SPLIT_ROLE_CENTRAL
+    default y
+endif
+
+if SHIELD_SHERIFF_LEFT || SHIELD_SHERIFF_RIGHT
+config ZMK_SPLIT
+    default y
+
+endif

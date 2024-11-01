@@ -1,0 +1,283 @@
+
+#include <behaviors.dtsi>
+#include <dt-bindings/zmk/bt.h>
+#include <dt-bindings/zmk/keys.h>
+#include <dt-bindings/zmk/outputs.h>
+#include <dt-bindings/zmk/ext_power.h>
+
+#define QWERTY      0
+#define SYM         1
+#define NAV         2
+#define NUM         3
+#define WASD        4
+#define DOUBLE      5
+#define DVORAK      6
+#define GRAPHITE    7
+#define SC_TAB      8
+#define REP_8       9
+#define MT_QWERTY   10
+
+// additional caps word keys
+&caps_word {
+    continue-list = <UNDERSCORE MINUS LS(MINUS) UP DOWN LEFT RIGHT BSPC DEL>;
+};
+
+/ {
+
+
+    macros {
+        // num hold repeats
+        repeat_up_8: repeat_up_8{
+            compatible = "zmk,behavior-macro";
+            #binding-cells = <0>;
+            wait-ms = <10>;
+            tap-ms = <10>;
+            bindings = <&kp UP &kp UP &kp UP &kp UP &kp UP &kp UP &kp UP &kp UP >;
+        }
+        repeat_down_8: repeat_down_8{
+            compatible = "zmk,behavior-macro";
+            #binding-cells = <0>;
+            wait-ms = <10>;
+            tap-ms = <10>;
+            bindings = <&kp DOWN &kp DOWN &kp DOWN &kp DOWN &kp DOWN &kp DOWN &kp DOWN &kp DOWN >;
+        }
+        repeat_left_8: repeat_left_8{
+            compatible = "zmk,behavior-macro";
+            #binding-cells = <0>;
+            wait-ms = <10>;
+            tap-ms = <10>;
+            bindings = <&kp LEFT &kp LEFT &kp LEFT &kp LEFT &kp LEFT &kp LEFT &kp LEFT &kp LEFT >;
+        }
+        repeat_right_8: repeat_right_8{
+            compatible = "zmk,behavior-macro";
+            #binding-cells = <0>;
+            wait-ms = <10>;
+            tap-ms = <10>;
+            bindings = <&kp RIGHT &kp RIGHT &kp RIGHT &kp RIGHT &kp RIGHT &kp RIGHT &kp RIGHT &kp RIGHT >;
+        }
+
+    };
+
+
+    behaviors {
+        lthp: layer_tap_hold_preferred {
+            compatible = "zmk,behavior-hold-tap";
+            #binding-cells = <2>;
+            flavor = "hold-preferred";
+            tapping-term-ms = <200>;
+            bindings = <&mo>, <&kp>;
+        };
+
+        mthp: mod_tap_hold_preferred {
+            compatible = "zmk,behavior-hold-tap";
+            #binding-cells = <2>;
+            flavor = "balanced";
+            tapping-term-ms = <200>;
+            bindings = <&kp>, <&kp>;
+        };
+
+        rot_8_repeat_ud: rotate_8_times_up_down{
+            compatible = "zmk,behavior-sensor-rotate-var";
+            #sensor-binding-cells = <2>;
+            bindings = <&repeat_down_8>, <&repeat_up_8>;
+        };
+        rot_8_repeat_lr: rotate_8_times_left_right{
+            compatible = "zmk,behavior-sensor-rotate-var";
+            #sensor-binding-cells = <2>;
+            bindings = <&repeat_right_8>, <&repeat_left_8>;
+        };
+        rot_repeat: sensor_rotate_kp{
+            compatible = "zmk,behavior-sensor-rotate-var";
+            #sensor-binding-cells = <2>;
+            bindings = <&key_repeat>, <&key_repeat>;
+        };
+    };
+
+    combos {
+        compatible = "zmk,combos";
+        jk_esc {
+            bindings = <&kp ESC>;
+            key-positions = <23 24>;
+        }
+
+
+        gm_capsword {
+            bindings = <&caps_word>;
+            // caps on G+M
+            key-positions = <28 29>;
+        }; 
+
+        sticky_adjust {
+            bindings = <&sl ADJUST>;
+            // sticky adjust layer on LALT+RALT
+            key-positions = <51 56>;
+        };
+    };
+
+    keymap {
+        compatible = "zmk,keymap";
+
+        qwerty_layer {
+            bindings = <
+                                        &kp ESC &kp N2    &kp N3   &kp N4    &kp N5                                                   &kp N6    &kp N7    &lt REP_8 N8 &kp N9    &kp DEL
+            &kp HOME     &kp GRAVE      &kp N1  &kp W     &kp E    &kp R     &kp T                                                    &kp Y     &kp U     &kp I        &kp O     &kp N0     &kp MINUS  &kp EQUAL
+            &kp END      &lt SC_TAB TAB &kp Q   &kp S     &kp D    &kp F     &kp G                                                    &kp H     &kp J     &kp K        &kp L     &kp P      &kp LBKT   &kp RBKT
+            &kp CAPS     &kp ESC        &kp A   &kp X     &kp C    &kp V     &kp B    &lt NUM SPACE                        &kp ENTER  &kp N     &kp M     &kp COMMA    &kp DOT   &kp SEMI   &kp SQT    &kp BSLH
+                         &kp LSHFT      &kp Z   &kp LSHFT &kp DOWN &kp LCTRL &kp LGUI &kp LALT   &lt NAV BSPC  &lt SYM ESC &kp RSHFT  &kp RCTRL &kp RCTRL &kp LEFT     &kp RIGHT &kp SLASH  &kp RSHFT 
+            >;
+
+            sensor-bindings = <&inc_dec_kp RIGHT LEFT &inc_dec_kp DOWN UP>;
+        };
+
+        symbol_layer {
+            // right thunb backspace activated
+
+            bindings = <
+                             &trans    &kp F2    &kp F3    &kp F4    &kp F5                                       &kp F6    &kp F7    &kp F8    &kp F9    &trans  
+            &trans &trans    &kp F1    &kp TILDE &trans    &trans    &trans                                       &trans    &kp LBRC  &kp RBRC  &kp LBKT  &kp F10   &kp F11 &kp F12
+            &trans &kp GRAVE &kp GRAVE &kp AT    &kp HASH  &kp DLLR  &kp PRCNT                                    &kp CARET &kp AMPS  &kp ASTRK &kp LPAR  &kp RBKT  &trans  &trans
+            &trans &kp CAPS  &kp EXCL  &kp LCTRL &trans    &trans    &trans     &kp SPACE                  &trans &trans    &trans    &trans    &kp RCTRL &kp RPAR  &trans  &trans
+                   &trans    &kp RSHFT &kp LALT  &trans    &kp LCTRL &mo DOUBLE &kp LALT &kp BSPC  &trans  &trans &trans    &kp RCTRL &trans    &kp RALT  &kp RSHFT &trans 
+            >;                                                                                    // ↑ pressed
+
+            sensor-bindings = <&rot_repeat &inc_dec_kp DEL BSPC>;
+        };
+
+        navivation_layer {
+            // left thumb esc activated
+            bindings = <
+                             &trans    &kp F2    &kp F3    &kp F4      &kp F5                                      &kp F6    &kp F7     &kp F8       &kp F9       &trans
+            &trans &trans    &kp F1    &trans    &trans    &trans      &trans                                      &kp HOME  &kp PG_DN  &kp PG_UP    &kp END      &kp F10    &kp F11 &kp F12
+            &trans &trans    &trans    &kp LALT  &kp LCTRL &kp RSHFT   &trans                                      &kp LEFT  &kp DOWN   &kp UP       &kp RIGHT    &kp C_PREV &trans  &trans
+            &trans &trans    &kp LGUI  &trans    &trans    &trans      &trans    &trans                  &kp N0    &trans    &kp C_MUTE &kp C_VOL_DN &kp C_VOL_UP &kp C_PP   &trans  &trans
+                   &trans    &trans    &trans    &trans    &kp LCTRL   &trans    &trans  &trans  &kp ESC &kp RSHFT &kp RCTRL &kp RCTRL  &trans       &kp RALT     &kp C_NEXT &trans 
+            >;                                                                          // ↑ pressed
+            sensor-bindings = <&inc_dec_kp UP DOWN &inc_dec_kp DEL BSPC>;
+        };
+
+
+        num_layer {
+            bindings = <
+                          &trans    &kp F2    &kp F3    &kp F4      &kp F5                                      &kp F6    &kp F7    &kp F8   &kp F9    &kp BSPC
+            &trans &trans &kp F1    &trans    &trans    &trans      &trans                                      &kp PLUS  &kp N7    &kp N8    &kp N9   &kp F10   &kp F11 &kp F12
+            &trans &trans &trans    &kp LALT  &kp LCTRL &kp RSHFT   &kp PRCNT                                   &kp MINUS &kp N4    &kp N5    &kp N6   &kp ASTRK &trans  &trans
+            &trans &trans &kp LGUI  &trans    &trans    &trans      &kp MINUS &trans                  &kp ENTER &kp RCTRL &kp N1    &kp N2    &kp N3   &kp DOT   &trans  &trans
+                   &trans &trans    &trans    &trans    &kp LCTRL   &trans    &trans  &trans  &trans  &kp RSHFT &kp N0    &kp RCTRL &kp N0    &kp DOT  &kp SLASH &trans 
+            >;                                                                   // ↑↑ pressed
+
+            sensor-bindings = <&inc_dec_kp BSPC DEL &inc_dec_kp DOWN UP>;
+        };
+
+        wasd_layer {
+            // permanent layer, hold esc+alt to enter double layer
+            bindings = <
+                                  &kp N1    &kp N2    &kp N3    &kp N4      &kp N5                                      &kp N6    &kp N7    &lt REP_8 N8 &kp N9    &kp DEL
+            &kp ESC     &kp TAB   &kp Q     &kp W     &kp E     &kp R       &kp T                                       &kp Y     &kp U     &kp I        &kp O     &kp N0     &kp MINUS  &kp EQUAL
+            &kp GRAVE   &kp RSHFT &kp A     &kp S     &kp D     &kp F       &kp G                                       &kp H     &kp J     &kp K        &kp L     &kp P      &kp LBKT   &kp RBKT
+            &none       &kp LCTRL &kp Z     &kp X     &kp C     &kp V       &kp B     &kp SPACE              &kp ENTER  &kp N     &kp M     &kp COMMA    &kp DOT   &kp SEMI   &kp SQT    &kp BSLH 
+                        &none     &none     &none     &none     &kp LCTRL   &kp SPACE &kp  ESC  &lt SYM ESC  &kp RSHFT  &kp RCTRL &kp RCTRL &kp LEFT     &kp RIGHT &kp SLASH  &kp RSHFT   
+            >;
+            sensor-bindings = <&inc_dec_kp D A &inc_dec_kp DOWN UP>;
+        };
+
+        double_layer {
+            // permanent layer, hold esc+alt to enter double layer
+            bindings = <
+                            &none        &bt BT_SEL 2 &bt BT_SEL 3 &bt BT_SEL 4 &bt BT_SEL 5                  &none &none         &none    &none        &none
+                &none &none &bt BT_SEL 1 &to WASD     &none        &none        &ext_power EP_TOG             &none &none         &none    &none        &bt BT_SEL 0 &none &none 
+                &none &none &to QWERTY   &none        &to DVORAK   &none        &to GRAPHITE                  &none &to MT_QWERTY &to WASD &to DVORAK   &none        &none &none 
+                &none &none &none        &none        &bt BT_CLR   &none        &none &none             &none &none &none         &none    &none        &none        &none &none 
+                      &none &none        &none        &none        &none        &none &none &none &none &none &none &none         &none    &none        &none        &none
+            >;
+            sensor-bindings = <&none &none>;
+        };
+
+
+        dvorak_layer {
+            // has homerow mods
+            bindings = <
+                                        &kp ESC   &kp N2    &kp N3   &kp N4    &kp N5                                                   &kp N6    &kp N7    &lt REP_8 N8 &kp N9    &kp DEL
+            &kp HOME     &kp GRAVE      &kp N1    &kp COMMA &kp DOT  &kp P     &kp Y                                                    &kp F     &kp G     &kp C        &kp R     &kp N0 &kp LBKT   &kp RBKT
+            &kp END      &lt SC_TAB TAB &kp SQT   &kp O     &kp E    &kp U     &kp I                                                    &kp D     &kp H     &kp T        &kp N     &kp L  &kp SLASH  &kp EQUAL
+            &kp CAPS     &kp ESC        &kp A     &kp Q     &kp J    &kp K     &kp X    &lt NUM SPACE                        &kp ENTER  &kp B     &kp M     &kp W        &kp V     &kp S  &kp MINUS  &kp BSLH
+                         &kp LSHFT      &kp SEMI  &kp LSHFT &kp DOWN &kp LCTRL &kp LGUI &kp LALT   &lt NAV BSPC  &lt SYM ESC &kp RSHFT  &kp RCTRL &kp RCTRL &kp LEFT     &kp RIGHT &kp Z  &kp RSHFT 
+            >;
+
+            sensor-bindings = <&inc_dec_kp RIGHT LEFT &inc_dec_kp DOWN UP>;
+        };
+
+        graphite_layer {
+            bindings = <
+                                        &kp ESC &kp N2    &kp N3   &kp N4    &kp N5                                                   &kp N6    &kp N7    &lt REP_8 N8 &kp N9    &kp DEL
+            &kp HOME     &kp GRAVE      &kp N1  &kp L     &kp D    &kp W     &kp Z                                                    &kp MINUS &kp F     &kp O        &kp U     &kp N0     &kp LBKT   &kp RBKT
+            &kp END      &lt SC_TAB TAB &kp B   &kp R     &kp T    &kp S     &kp G                                                    &kp Y     &kp H     &kp A        &kp E     &kp J      &kp SEMI   &kp EQUAL
+            &kp CAPS     &kp ESC        &kp N   &kp X     &kp M    &kp C     &kp V    &lt NUM SPACE                        &kp ENTER  &kp K     &kp P     &kp DOT      &kp SQT   &kp I      &kp COMMA  &kp BSLH
+                         &kp LSHFT      &kp Q   &kp LSHFT &kp DOWN &kp LCTRL &kp LGUI &kp LALT   &lt NAV BSPC  &lt SYM ESC &kp RSHFT  &kp RCTRL &kp RCTRL &kp LEFT     &kp RIGHT &kp SLASH  &kp RSHFT 
+            >;
+
+            sensor-bindings = <&inc_dec_kp LEFT RIGHT &inc_dec_kp UP DOWN>;
+        };
+
+        scroll_tab_layer{
+            bindings = <
+                              &trans &trans &trans &trans &trans                             &trans &trans &trans &trans &trans
+                &trans &trans &trans &trans &trans &trans &trans                             &trans &trans &trans &trans &trans &trans &trans
+                &trans &trans &trans &trans &trans &trans &trans                             &trans &trans &trans &trans &trans &trans &trans
+                &trans &trans &trans &trans &trans &trans &trans &trans               &trans &trans &trans &trans &trans &trans &trans &trans
+                       &trans &trans &trans &trans &trans &trans &trans &trans &trans &trans &trans &trans &trans &trans &trans &trans
+            >;
+
+            sensor-bindings = <&inc_dec_kp TAB LS(TAB) &inc_dec_kp TAB LS(TAB)>;
+        };
+
+        repeat_8_layer{
+            bindings = <
+                              &trans &trans &trans &trans &trans                             &trans &trans &trans &trans &trans
+                &trans &trans &trans &trans &trans &trans &trans                             &trans &trans &trans &trans &trans &trans &trans
+                &trans &trans &trans &trans &trans &trans &trans                             &trans &trans &trans &trans &trans &trans &trans
+                &trans &trans &trans &trans &trans &trans &trans &trans               &trans &trans &trans &trans &trans &trans &trans &trans
+                       &trans &trans &trans &trans &trans &trans &trans &trans &trans &trans &trans &trans &trans &trans &trans &trans
+            >;
+
+            sensor-bindings = <&rot_8_repeat_lr &rot_8_repeat_ud>;
+        };
+
+        mod_tap_qwerty_layer {
+            bindings = <
+                                        &kp ESC      &kp N2         &kp N3         &kp N4        &kp N5                                                   &kp N6        &kp N7        &lt REP_8 N8     &kp N9        &kp DEL
+            &kp HOME     &kp GRAVE      &kp N1       &kp W          &kp E          &kp R         &kp T                                                    &kp Y         &kp U         &kp I            &kp O         &kp N0          &kp MINUS  &kp EQUAL
+            &kp END      &lt SC_TAB TAB &kp Q        &mthp LALT S   &mthp LCTRL D  &mthp LSHFT F &kp G                                                    &kp H         &mthp RSHFT J &mthp RCTRL K    &mthp RALT L  &kp P           &kp LBKT   &kp RBKT
+            &kp CAPS     &kp ESC        &mthp LGUI A &kp X          &kp C          &kp V         &kp B    &lt NUM SPACE                        &kp ENTER  &kp N         &kp M         &kp COMMA        &kp DOT       &mthp RGUI SEMI &kp SQT    &kp BSLH
+                         &kp LSHFT      &kp Z        &kp LSHFT      &kp DOWN       &kp LCTRL     &kp LGUI &kp LALT   &lt NAV BSPC  &lt SYM ESC &kp RSHFT  &kp RCTRL     &kp RCTRL     &kp LEFT         &kp RIGHT     &kp SLASH       &kp RSHFT 
+            >;
+
+            sensor-bindings = <&inc_dec_kp RIGHT LEFT &inc_dec_kp DOWN UP>;
+        };
+
+
+        mod_tap_dvorak_layer {
+            // has homerow mods
+            bindings = <
+                                        &kp ESC      &kp N2       &kp N3       &kp N4       &kp N5                                                   &kp N6    &kp N7        &lt REP_8 N8  &kp N9       &kp DEL
+            &kp HOME     &kp GRAVE      &kp N1       &kp COMMA    &kp DOT      &kp P        &kp Y                                                    &kp F     &kp G         &kp C         &kp R        &kp N0       &kp LBKT   &kp RBKT
+            &kp END      &lt SC_TAB TAB &kp SQT      &mthp LALT O &mthp LALT E &mthp LALT U &kp I                                                    &kp D     &mthp RSHFT H &mthp RCTRL T &mthp RALT N &kp L        &kp SLASH  &kp EQUAL
+            &kp CAPS     &kp ESC        &mthp LGUI A &kp Q        &kp J        &kp K        &kp X    &lt NUM SPACE                        &kp ENTER  &kp B     &kp M         &kp W         &kp V        &mthp RGUI S &kp MINUS  &kp BSLH
+                         &kp LSHFT      &kp SEMI     &kp LSHFT    &kp DOWN     &kp LCTRL    &kp LGUI &kp LALT   &lt NAV BSPC  &lt SYM ESC &kp RSHFT  &kp RCTRL &kp RCTRL     &kp LEFT      &kp RIGHT    &kp Z        &kp RSHFT 
+            >;
+
+            sensor-bindings = <&inc_dec_kp RIGHT LEFT &inc_dec_kp DOWN UP>;
+        };
+
+        mod_tap_graphite_layer {
+            bindings = <
+                                        &kp ESC       &kp N2          &kp N3         &kp N4          &kp N5                                                   &kp N6    &kp N7          &lt REP_8 N8       &kp N9          &kp DEL
+            &kp HOME     &kp GRAVE      &kp N1        &kp L           &kp D          &kp W           &kp Z                                                    &kp MINUS &kp F           &kp O              &kp U           &kp N0           &kp LBKT   &kp RBKT
+            &kp END      &lt SC_TAB TAB &kp B         &mthp LSHFT R   &kp T          &kp S           &kp G                                                    &kp Y     &kp H           &kp A              &kp E           &kp J            &kp SEMI   &kp EQUAL
+            &kp CAPS     &kp ESC        &mthp LSHFT N &kp X           &kp M          &kp C           &kp V    &lt NUM SPACE                        &kp ENTER  &kp K     &kp P           &kp DOT            &kp SQT         &kp I            &kp COMMA  &kp BSLH
+                         &kp LSHFT      &kp Q         &kp LSHFT       &kp DOWN       &kp LCTRL       &kp LGUI &kp LALT   &lt NAV BSPC  &lt SYM ESC &kp RSHFT  &kp RCTRL &kp RCTRL       &kp LEFT           &kp RIGHT       &kp SLASH        &kp RSHFT 
+            >;
+
+            sensor-bindings = <&inc_dec_kp LEFT RIGHT &inc_dec_kp UP DOWN>;
+        };
+    };
+};
