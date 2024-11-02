@@ -16,6 +16,8 @@
 #define SC_TAB      8
 #define REP_8       9
 #define MT_QWERTY   10
+#define MT_DVORAK   11
+#define MT_GRAPHITE 12
 
 // additional caps word keys
 &caps_word {
