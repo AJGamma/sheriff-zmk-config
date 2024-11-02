@@ -56,7 +56,7 @@
             wait-ms = <10>;
             tap-ms = <10>;
             bindings = <&kp RIGHT &kp RIGHT &kp RIGHT &kp RIGHT &kp RIGHT &kp RIGHT &kp RIGHT &kp RIGHT >;
-        }
+        };
 
     };
 
