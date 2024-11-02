@@ -35,21 +35,21 @@
             wait-ms = <10>;
             tap-ms = <10>;
             bindings = <&kp UP &kp UP &kp UP &kp UP &kp UP &kp UP &kp UP &kp UP >;
-        }
+        };
         repeat_down_8: repeat_down_8{
             compatible = "zmk,behavior-macro";
             #binding-cells = <0>;
             wait-ms = <10>;
             tap-ms = <10>;
             bindings = <&kp DOWN &kp DOWN &kp DOWN &kp DOWN &kp DOWN &kp DOWN &kp DOWN &kp DOWN >;
-        }
+        };
         repeat_left_8: repeat_left_8{
             compatible = "zmk,behavior-macro";
             #binding-cells = <0>;
             wait-ms = <10>;
             tap-ms = <10>;
             bindings = <&kp LEFT &kp LEFT &kp LEFT &kp LEFT &kp LEFT &kp LEFT &kp LEFT &kp LEFT >;
-        }
+        };
         repeat_right_8: repeat_right_8{
             compatible = "zmk,behavior-macro";
             #binding-cells = <0>;
@@ -100,7 +100,7 @@
         jk_esc {
             bindings = <&kp ESC>;
             key-positions = <23 24>;
-        }
+        };
 
 
         gm_capsword {
