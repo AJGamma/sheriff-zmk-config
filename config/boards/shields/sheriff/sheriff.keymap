@@ -103,17 +103,6 @@
         };
 
 
-        gm_capsword {
-            bindings = <&caps_word>;
-            // caps on G+M
-            key-positions = <28 29>;
-        }; 
-
-        sticky_adjust {
-            bindings = <&sl ADJUST>;
-            // sticky adjust layer on LALT+RALT
-            key-positions = <51 56>;
-        };
     };
 
     keymap {
