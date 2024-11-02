@@ -1,4 +1,12 @@
-on: [push, pull_request, workflow_dispatch]
+on:
+  push:
+    branches: [ "aj" ]
+  pull_request_target:
+    branches: [ "aj" ]
+  workflow_dispatch:
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
 
 jobs:
   build:
