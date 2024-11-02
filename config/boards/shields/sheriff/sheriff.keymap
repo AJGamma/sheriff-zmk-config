@@ -79,18 +79,18 @@
         };
 
         rot_8_repeat_ud: rotate_8_times_up_down{
-            compatible = "zmk,behavior-sensor-rotate-var";
-            #sensor-binding-cells = <2>;
+            compatible = "zmk,behavior-sensor-rotate";
+            #sensor-binding-cells = <0>;
             bindings = <&repeat_down_8>, <&repeat_up_8>;
         };
         rot_8_repeat_lr: rotate_8_times_left_right{
-            compatible = "zmk,behavior-sensor-rotate-var";
-            #sensor-binding-cells = <2>;
+            compatible = "zmk,behavior-sensor-rotate";
+            #sensor-binding-cells = <0>;
             bindings = <&repeat_right_8>, <&repeat_left_8>;
         };
         rot_repeat: sensor_rotate_kp{
-            compatible = "zmk,behavior-sensor-rotate-var";
-            #sensor-binding-cells = <2>;
+            compatible = "zmk,behavior-sensor-rotate";
+            #sensor-binding-cells = <0>;
             bindings = <&key_repeat>, <&key_repeat>;
         };
 
@@ -114,8 +114,8 @@
                                         &kp ESC &kp N2    &kp N3   &kp N4    &kp N5                                                   &kp N6    &kp N7    &lt REP_8 N8 &kp N9    &kp DEL
             &kp HOME     &kp GRAVE      &kp N1  &kp W     &kp E    &kp R     &kp T                                                    &kp Y     &kp U     &kp I        &kp O     &kp N0     &kp MINUS  &kp EQUAL
             &kp END      &lt SC_TAB TAB &kp Q   &kp S     &kp D    &kp F     &kp G                                                    &kp H     &kp J     &kp K        &kp L     &kp P      &kp LBKT   &kp RBKT
-            &kp CAPS     &kp ESC        &kp A   &kp X     &kp C    &kp V     &kp B    &lt NUM SPACE                        &kp ENTER  &kp N     &kp M     &kp COMMA    &kp DOT   &kp SEMI   &kp SQT    &kp BSLH
-                         &kp LSHFT      &kp Z   &kp LSHFT &kp DOWN &kp LCTRL &kp LGUI &kp LALT   &lt NAV BSPC  &lt SYM ESC &kp RSHFT  &kp RCTRL &kp RCTRL &kp LEFT     &kp RIGHT &kp SLASH  &kp RSHFT 
+            &kp LCTRL    &kp CAPS       &kp A   &kp X     &kp C    &kp V     &kp B    &lt NUM SPACE                        &kp ENTER  &kp N     &kp M     &kp COMMA    &kp DOT   &kp SEMI   &kp SQT    &kp BSLH
+                         &kp LSHFT      &kp Z   &kp LSHFT &kp DOWN &kp LCTRL &kp LGUI &kp LALT   &lt NAV BSPC  &lt SYM ESC &kp RSHFT  &kp RCTRL &kp RCTRL &kp RGUI     &kp RCTRL &kp SLASH  &kp RSHFT 
             >;
 
             sensor-bindings = <&inc_dec_kp RIGHT LEFT &inc_dec_kp DOWN UP>;
@@ -125,15 +125,15 @@
             // right thunb backspace activated
 
             bindings = <
-                             &trans    &kp F2    &kp F3    &kp F4    &kp F5                                       &kp F6    &kp F7    &kp F8    &kp F9    &trans  
-            &trans &trans    &kp F1    &kp TILDE &trans    &trans    &trans                                       &trans    &kp LBRC  &kp RBRC  &kp LBKT  &kp F10   &kp F11 &kp F12
-            &trans &kp GRAVE &kp GRAVE &kp AT    &kp HASH  &kp DLLR  &kp PRCNT                                    &kp CARET &kp AMPS  &kp ASTRK &kp LPAR  &kp RBKT  &trans  &trans
-            &trans &kp CAPS  &kp EXCL  &kp LCTRL &trans    &trans    &trans     &kp SPACE                  &trans &trans    &trans    &trans    &kp RCTRL &kp RPAR  &trans  &trans
-                   &trans    &kp RSHFT &kp LALT  &trans    &kp LCTRL &mo DOUBLE &kp LALT &kp BSPC  &trans  &trans &trans    &kp RCTRL &trans    &kp RALT  &kp RSHFT &trans 
-            >;                                                                                    // ↑ pressed
+                             &trans    &kp F2    &kp F3    &kp F4    &kp F5                                             &kp F6    &kp F7    &kp F8    &kp F9    &trans  
+            &trans &trans    &kp F1    &kp TILDE &kp MINUS &kp EQUAL &trans                                             &trans    &kp LBRC  &kp RBRC  &kp LBKT  &kp F10   &kp F11 &kp F12
+            &trans &kp GRAVE &kp GRAVE &kp AT    &kp HASH  &kp DLLR  &kp PRCNT                                          &kp CARET &kp AMPS  &kp ASTRK &kp LPAR  &kp RBKT  &trans  &trans
+            &trans &kp CAPS  &kp EXCL  &kp LCTRL &trans    &trans    &trans     &kp SPACE                        &trans &kp BSLH  &kp SQT   &kp DQT   &kp RCTRL &kp RPAR  &trans  &trans
+                   &trans    &kp RSHFT &kp LALT  &trans    &kp LCTRL &mo DOUBLE &kp LALT &kp BSPC        &trans  &trans &trans    &kp RCTRL &trans    &kp RALT  &kp RSHFT &trans 
+            >;                                                                                          // ↑ pressed
 
-            // sensor-bindings = <&rot_repeat &inc_dec_kp DEL BSPC>;
-            sensor-bindings = <&inc_dec_kp RIGHT LEFT &inc_dec_kp DOWN UP>;
+            sensor-bindings = <&rot_repeat &inc_dec_kp DEL BSPC>;
+            // sensor-bindings = <&inc_dec_kp RIGHT LEFT &inc_dec_kp DOWN UP>;
         };
 
         navivation_layer {
@@ -176,11 +176,11 @@
         double_layer {
             // permanent layer, hold esc+alt to enter double layer
             bindings = <
-                            &none        &bt BT_SEL 2 &bt BT_SEL 3 &bt BT_SEL 4 &bt BT_SEL 5                  &none &none         &none    &none        &none
-                &none &none &bt BT_SEL 1 &to WASD     &none        &none        &ext_power EP_TOG             &none &none         &none    &none        &bt BT_SEL 0 &none &none 
-                &none &none &to QWERTY   &none        &to DVORAK   &none        &to GRAPHITE                  &none &to MT_QWERTY &to WASD &to DVORAK   &none        &none &none 
-                &none &none &none        &none        &bt BT_CLR   &none        &none &none             &none &none &none         &none    &none        &none        &none &none 
-                      &none &none        &none        &none        &none        &none &none &none &none &none &none &none         &none    &none        &none        &none
+                            &none        &bt BT_SEL 2 &bt BT_SEL 3 &bt BT_SEL 4 &bt BT_SEL 5                  &none &none         &none            &none          &none
+                &none &none &bt BT_SEL 1 &to WASD     &none        &none        &ext_power EP_TOG             &none &none         &none            &none          &bt BT_SEL 0 &none &none 
+                &none &none &to QWERTY   &none        &to DVORAK   &none        &to GRAPHITE                  &none &to MT_QWERTY &to MT_GRAPHITE  &to MT_DVORAK  &none        &none &none 
+                &none &none &none        &none        &bt BT_CLR   &none        &none &none             &none &none &none         &none            &none          &none        &none &none 
+                      &none &none        &none        &none        &none        &none &none &none &none &none &none &none         &none            &none          &none        &none
             >;
             sensor-bindings = <&inc_dec_kp RIGHT LEFT &inc_dec_kp DOWN UP>;
         };
@@ -232,7 +232,7 @@
                        &trans &trans &trans &trans &trans &trans &trans &trans &trans &trans &trans &trans &trans &trans &trans &trans
             >;
 
-            sensor-bindings = <&rot_8_repeat_lr RIGHT LEFT &rot_8_repeat_ud DOWN UP>;       // you've got to add keycodes after the rot_8_repeat_lr and rot_8_repeat_ud, otherwise the build action will fail
+            sensor-bindings = <&rot_8_repeat_lr &rot_8_repeat_ud >;
         };
 
         mod_tap_qwerty_layer {
