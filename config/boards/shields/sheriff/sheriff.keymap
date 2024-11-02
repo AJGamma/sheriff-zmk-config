@@ -232,7 +232,7 @@
                        &trans &trans &trans &trans &trans &trans &trans &trans &trans &trans &trans &trans &trans &trans &trans &trans
             >;
 
-            sensor-bindings = <&rot_8_repeat_lr LEFT LEFT &rot_8_repeat_ud RIGHT RIGHT>;
+            sensor-bindings = <&rot_8_repeat_lr  &rot_8_repeat_ud >;
         };
 
         mod_tap_qwerty_layer {
