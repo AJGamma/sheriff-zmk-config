@@ -232,7 +232,7 @@
                        &trans &trans &trans &trans &trans &trans &trans &trans &trans &trans &trans &trans &trans &trans &trans &trans
             >;
 
-            sensor-bindings = <&rot_8_repeat_lr  &rot_8_repeat_ud >;
+            sensor-bindings = <&rot_8_repeat_lr RIGHT LEFT &rot_8_repeat_ud DOWN UP>;       // you've got to add keycodes after the rot_8_repeat_lr and rot_8_repeat_ud, otherwise the build action will fail
         };
 
         mod_tap_qwerty_layer {
