@@ -1,0 +1,12 @@
+file_format: "1"
+id: sheriff
+name: Sheriff
+type: shield
+url: https://github.com/ajgamma/sheriff-keyboard
+requires: [pro_micro]
+features:
+  - keys
+  - encoder
+siblings:
+  - sheriff_left
+  - sheriff_right
