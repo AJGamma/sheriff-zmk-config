@@ -4,3 +4,5 @@ include:
     shield: sheriff_left
   - board: nice_nano_v2
     shield: sheriff_right
+  - board: nice_nano_v2
+    shield: settings_reset
