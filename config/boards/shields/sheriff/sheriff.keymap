@@ -80,7 +80,7 @@
 
 
         rot_clk_cnt: rotation_clk_counter{
-            compatible = "zmk,zmk,behavior-sensor-rotate-var";
+            compatible = "zmk,behavior-sensor-rotate-var";
             #sensor-binding-cells = <2>;
             tap-ms = <20>;
             bindings = <&kp>, <&kp>;
