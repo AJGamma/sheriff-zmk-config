@@ -78,6 +78,14 @@
             bindings = <&kp>, <&kp>;
         };
 
+
+        rot_clk_cnt: rotation_clk_counter{
+            compatible = "zmk,zmk,behavior-sensor-rotate-var";
+            #sensor-binding-cells = <2>;
+            tap-ms = <20>;
+            bindings = <&kp>, <&kp>;
+        };
+
         rot_8_repeat_ud: rotate_8_times_up_down{
             compatible = "zmk,behavior-sensor-rotate";
             #sensor-binding-cells = <0>;
@@ -118,7 +126,7 @@
                          &kp LSHFT      &kp Z   &kp LSHFT &kp DOWN &kp LCTRL &kp LGUI &kp LALT   &lt NAV BSPC  &lt SYM ESC &kp RSHFT  &kp RCTRL &kp RCTRL &kp RGUI     &kp RCTRL &kp SLASH  &kp RSHFT 
             >;
 
-            sensor-bindings = <&inc_dec_kp RIGHT LEFT &inc_dec_kp DOWN UP>;
+            sensor-bindings = <&rot_clk_cnt RIGHT LEFT &rot_clk_cnt DOWN UP>;
         };
 
         symbol_layer {
@@ -132,8 +140,8 @@
                    &trans    &kp RSHFT &kp LALT  &trans    &kp LCTRL &mo DOUBLE &kp LALT &kp BSPC        &trans  &trans &trans    &kp RCTRL &trans    &kp RALT  &kp RSHFT &trans 
             >;                                                                                          // ↑ pressed
 
-            sensor-bindings = <&rot_repeat &inc_dec_kp DEL BSPC>;
-            // sensor-bindings = <&inc_dec_kp RIGHT LEFT &inc_dec_kp DOWN UP>;
+            sensor-bindings = <&rot_repeat &rot_clk_cnt DEL BSPC>;
+            // sensor-bindings = <&rot_clk_cnt RIGHT LEFT &rot_clk_cnt DOWN UP>;
         };
 
         navivation_layer {
@@ -145,7 +153,7 @@
             &trans &trans    &kp LGUI  &trans    &trans    &trans      &trans    &trans                  &kp N0    &trans    &kp C_MUTE &kp C_VOL_DN &kp C_VOL_UP &kp C_PP   &trans  &trans
                    &trans    &trans    &trans    &trans    &kp LCTRL   &trans    &trans  &trans  &kp ESC &kp RSHFT &kp RCTRL &kp RCTRL  &trans       &kp RALT     &kp C_NEXT &trans 
             >;                                                                          // ↑ pressed
-            sensor-bindings = <&inc_dec_kp UP DOWN &inc_dec_kp DEL BSPC>;
+            sensor-bindings = <&rot_clk_cnt UP DOWN &rot_clk_cnt DEL BSPC>;
         };
 
 
@@ -158,7 +166,7 @@
                    &trans &trans    &trans    &trans    &kp LCTRL   &trans    &trans  &trans  &trans  &kp RSHFT &kp N0    &kp RCTRL &kp N0    &kp DOT  &kp SLASH &trans 
             >;                                                                   // ↑↑ pressed
 
-            sensor-bindings = <&inc_dec_kp BSPC DEL &inc_dec_kp DOWN UP>;
+            sensor-bindings = <&rot_clk_cnt BSPC DEL &rot_clk_cnt DOWN UP>;
         };
 
         wasd_layer {
@@ -170,7 +178,7 @@
             &none       &kp LCTRL &kp Z     &kp X     &kp C     &kp V       &kp B     &kp SPACE              &kp ENTER  &kp N     &kp M     &kp COMMA    &kp DOT   &kp SEMI   &kp SQT    &kp BSLH 
                         &none     &none     &none     &none     &kp LCTRL   &kp SPACE &kp  ESC  &lt SYM ESC  &kp RSHFT  &kp RCTRL &kp RCTRL &kp LEFT     &kp RIGHT &kp SLASH  &kp RSHFT   
             >;
-            sensor-bindings = <&inc_dec_kp D A &inc_dec_kp DOWN UP>;
+            sensor-bindings = <&rot_clk_cnt D A &rot_clk_cnt DOWN UP>;
         };
 
         double_layer {
@@ -182,7 +190,7 @@
                 &none &none &none        &none        &bt BT_CLR   &none        &none &none             &none &none &none         &none            &none          &none        &none &none 
                       &none &none        &none        &none        &none        &none &none &none &none &none &none &none         &none            &none          &none        &none
             >;
-            sensor-bindings = <&inc_dec_kp RIGHT LEFT &inc_dec_kp DOWN UP>;
+            sensor-bindings = <&rot_clk_cnt RIGHT LEFT &rot_clk_cnt DOWN UP>;
         };
 
 
@@ -196,7 +204,7 @@
                          &kp LSHFT      &kp SEMI  &kp LSHFT &kp DOWN &kp LCTRL &kp LGUI &kp LALT   &lt NAV BSPC  &lt SYM ESC &kp RSHFT  &kp RCTRL &kp RCTRL &kp LEFT     &kp RIGHT &kp Z  &kp RSHFT 
             >;
 
-            sensor-bindings = <&inc_dec_kp RIGHT LEFT &inc_dec_kp DOWN UP>;
+            sensor-bindings = <&rot_clk_cnt RIGHT LEFT &rot_clk_cnt DOWN UP>;
         };
 
         graphite_layer {
@@ -208,7 +216,7 @@
                          &kp LSHFT      &kp Q   &kp LSHFT &kp DOWN &kp LCTRL &kp LGUI &kp LALT   &lt NAV BSPC  &lt SYM ESC &kp RSHFT  &kp RCTRL &kp RCTRL &kp LEFT     &kp RIGHT &kp SLASH  &kp RSHFT 
             >;
 
-            sensor-bindings = <&inc_dec_kp RIGHT LEFT &inc_dec_kp DOWN UP>;
+            sensor-bindings = <&rot_clk_cnt RIGHT LEFT &rot_clk_cnt DOWN UP>;
         };
 
         scroll_tab_layer{
@@ -220,7 +228,7 @@
                        &trans &trans &trans &trans &trans &trans &trans &trans &trans &trans &trans &trans &trans &trans &trans &trans
             >;
 
-            sensor-bindings = <&inc_dec_kp TAB LS(TAB) &inc_dec_kp TAB LS(TAB)>;
+            sensor-bindings = <&rot_clk_cnt TAB LS(TAB) &rot_clk_cnt TAB LS(TAB)>;
         };
 
         repeat_8_layer{
@@ -244,7 +252,7 @@
                          &kp LSHFT      &kp Z        &kp LSHFT      &kp DOWN       &kp LCTRL     &kp LGUI &kp LALT   &lt NAV BSPC  &lt SYM ESC &kp RSHFT  &kp RCTRL     &kp RCTRL     &kp LEFT         &kp RIGHT     &kp SLASH       &kp RSHFT 
             >;
 
-            sensor-bindings = <&inc_dec_kp RIGHT LEFT &inc_dec_kp DOWN UP>;
+            sensor-bindings = <&rot_clk_cnt RIGHT LEFT &rot_clk_cnt DOWN UP>;
         };
 
 
@@ -258,7 +266,7 @@
                          &kp LSHFT      &kp SEMI     &kp LSHFT    &kp DOWN     &kp LCTRL    &kp LGUI &kp LALT   &lt NAV BSPC  &lt SYM ESC &kp RSHFT  &kp RCTRL &kp RCTRL     &kp LEFT      &kp RIGHT    &kp Z        &kp RSHFT 
             >;
 
-            sensor-bindings = <&inc_dec_kp RIGHT LEFT &inc_dec_kp DOWN UP>;
+            sensor-bindings = <&rot_clk_cnt RIGHT LEFT &rot_clk_cnt DOWN UP>;
         };
 
         mod_tap_graphite_layer {
@@ -270,7 +278,7 @@
                          &kp LSHFT      &kp Q         &kp LSHFT       &kp DOWN       &kp LCTRL       &kp LGUI &kp LALT   &lt NAV BSPC  &lt SYM ESC &kp RSHFT  &kp RCTRL &kp RCTRL       &kp LEFT           &kp RIGHT       &kp SLASH        &kp RSHFT 
             >;
 
-            sensor-bindings = <&inc_dec_kp LEFT RIGHT &inc_dec_kp UP DOWN>;
+            sensor-bindings = <&rot_clk_cnt LEFT RIGHT &rot_clk_cnt UP DOWN>;
         };
     };
 };
