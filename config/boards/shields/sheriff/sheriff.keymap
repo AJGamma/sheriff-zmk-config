@@ -126,7 +126,7 @@
                          &kp LSHFT      &kp Z   &kp LSHFT &kp DOWN &kp LCTRL &kp LGUI &kp LALT   &lt NAV BSPC  &lt SYM ESC &kp RSHFT  &kp RCTRL &kp RCTRL &kp RGUI     &kp RCTRL &kp SLASH  &kp RSHFT 
             >;
 
-            sensor-bindings = <&rot_clk_cnt UP DOWN &rot_clk_cnt UP DOWN>;
+            sensor-bindings = <&rot_clk_cnt RIGHT LEFT &rot_clk_cnt UP DOWN>;
         };
 
         symbol_layer {
