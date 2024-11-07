@@ -1,6 +1,6 @@
 on:
   push:
-    branches: [ "aj" ]
+    branches: [ "aj", "wheelfix" ]
   pull_request_target:
     branches: [ "aj" ]
   workflow_dispatch:
