@@ -1,5 +1,7 @@
 
 if SHIELD_SHERIFF_RIGHT
+config ZMK_KEYBOARD_NAME
+    default ""
 
 config ZMK_SPLIT_ROLE_CENTRAL
     default n
