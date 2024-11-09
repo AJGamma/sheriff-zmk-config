@@ -126,7 +126,7 @@
                          &kp LSHFT      &kp Z   &kp LSHFT &kp DOWN &kp LCTRL &kp LGUI &kp LALT   &lt NAV BSPC  &lt SYM ESC &kp RSHFT  &kp RCTRL &kp RCTRL &kp RGUI     &kp RCTRL &kp SLASH  &kp RSHFT 
             >;
 
-            sensor-bindings = <&rot_clk_cnt RIGHT LEFT &rot_clk_cnt DOWN UP>;
+            sensor-bindings = <&rot_clk_cnt LEFT RIGHT &rot_clk_cnt DOWN UP>;
         };
 
         symbol_layer {
@@ -190,7 +190,7 @@
                 &none &none &none        &none        &bt BT_CLR   &none        &none &none             &none &none &none         &none            &none          &none        &none &none 
                       &none &none        &none        &none        &none        &none &none &none &none &none &none &none         &none            &none          &none        &none
             >;
-            sensor-bindings = <&rot_clk_cnt RIGHT LEFT &rot_clk_cnt DOWN UP>;
+            sensor-bindings = <&rot_clk_cnt LEFT RIGHT &rot_clk_cnt DOWN UP>;
         };
 
 
@@ -204,7 +204,7 @@
                          &kp LSHFT      &kp SEMI  &kp LSHFT &kp DOWN &kp LCTRL &kp LGUI &kp LALT   &lt NAV BSPC  &lt SYM ESC &kp RSHFT  &kp RCTRL &kp RCTRL &kp LEFT     &kp RIGHT &kp Z  &kp RSHFT 
             >;
 
-            sensor-bindings = <&rot_clk_cnt RIGHT LEFT &rot_clk_cnt DOWN UP>;
+            sensor-bindings = <&rot_clk_cnt LEFT RIGHT &rot_clk_cnt DOWN UP>;
         };
 
         graphite_layer {
@@ -216,7 +216,7 @@
                          &kp LSHFT      &kp Q   &kp LSHFT &kp DOWN &kp LCTRL &kp LGUI &kp LALT   &lt NAV BSPC  &lt SYM ESC &kp RSHFT  &kp RCTRL &kp RCTRL &kp LEFT     &kp RIGHT &kp SLASH  &kp RSHFT 
             >;
 
-            sensor-bindings = <&rot_clk_cnt RIGHT LEFT &rot_clk_cnt DOWN UP>;
+            sensor-bindings = <&rot_clk_cnt LEFT RIGHT &rot_clk_cnt DOWN UP>;
         };
 
         scroll_tab_layer{
@@ -252,7 +252,7 @@
                          &kp LSHFT      &kp Z        &kp LSHFT      &kp DOWN       &kp LCTRL     &kp LGUI &kp LALT   &lt NAV BSPC  &lt SYM ESC &kp RSHFT  &kp RCTRL     &kp RCTRL     &kp LEFT         &kp RIGHT     &kp SLASH       &kp RSHFT 
             >;
 
-            sensor-bindings = <&rot_clk_cnt RIGHT LEFT &rot_clk_cnt DOWN UP>;
+            sensor-bindings = <&rot_clk_cnt LEFT RIGHT &rot_clk_cnt DOWN UP>;
         };
 
 
@@ -266,7 +266,7 @@
                          &kp LSHFT      &kp SEMI     &kp LSHFT    &kp DOWN     &kp LCTRL    &kp LGUI &kp LALT   &lt NAV BSPC  &lt SYM ESC &kp RSHFT  &kp RCTRL &kp RCTRL     &kp LEFT      &kp RIGHT    &kp Z        &kp RSHFT 
             >;
 
-            sensor-bindings = <&rot_clk_cnt RIGHT LEFT &rot_clk_cnt DOWN UP>;
+            sensor-bindings = <&rot_clk_cnt LEFT RIGHT &rot_clk_cnt DOWN UP>;
         };
 
         mod_tap_graphite_layer {
@@ -278,7 +278,7 @@
                          &kp LSHFT      &kp Q         &kp LSHFT       &kp DOWN       &kp LCTRL       &kp LGUI &kp LALT   &lt NAV BSPC  &lt SYM ESC &kp RSHFT  &kp RCTRL &kp RCTRL       &kp LEFT           &kp RIGHT       &kp SLASH        &kp RSHFT 
             >;
 
-            sensor-bindings = <&rot_clk_cnt RIGHT LEFT &rot_clk_cnt DOWN UP>;
+            sensor-bindings = <&rot_clk_cnt LEFT RIGHT &rot_clk_cnt DOWN UP>;
         };
     };
 };
