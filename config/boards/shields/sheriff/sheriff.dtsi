@@ -31,7 +31,7 @@ RC(2,0) RC(3,1) RC(3,2) RC(3,3) RC(3,4) RC(3,5) RC(3,6) RC(0,1)                 
         compatible = "alps,ec11";
         a-gpios = <&pro_micro 21 (GPIO_ACTIVE_HIGH | GPIO_PULL_UP)>;
         b-gpios = <&pro_micro 2  (GPIO_ACTIVE_HIGH | GPIO_PULL_UP)>;
-        steps = <30>;
+        steps = <60>;
         status = "disabled";
     };
 
@@ -39,13 +39,13 @@ RC(2,0) RC(3,1) RC(3,2) RC(3,3) RC(3,4) RC(3,5) RC(3,6) RC(0,1)                 
         compatible = "alps,ec11";
         a-gpios = <&pro_micro 2 (GPIO_ACTIVE_HIGH | GPIO_PULL_UP)>;
         b-gpios = <&pro_micro 21  (GPIO_ACTIVE_HIGH | GPIO_PULL_UP)>;
-        steps = <30>;
+        steps = <60>;
         status = "disabled";
     };
 
     sensors: sensors {
         compatible = "zmk,keymap-sensors";
         sensors = <&encoder_left &encoder_right>;
-        triggers-per-rotation = <30>;
+        triggers-per-rotation = <15>;
     };
 };
