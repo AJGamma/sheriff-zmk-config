@@ -18,6 +18,8 @@
 #define MT_QWERTY   10
 #define MT_DVORAK   11
 #define MT_GRAPHITE 12
+#define VIM_WB      13
+#define VIM_EGE     13
 
 // additional caps word keys
 &caps_word {
@@ -57,6 +59,20 @@
             tap-ms = <5>;
             bindings = <&kp RIGHT &kp RIGHT &kp RIGHT &kp RIGHT &kp RIGHT &kp RIGHT &kp RIGHT &kp RIGHT >;
         };
+        vim_e: vim_e{
+            compatible = "zmk,behavior-macro";
+            #binding-cells = <0>;
+            wait-ms = <5>;
+            tap-ms = <5>;
+            bindings = <&kp E>;
+        };
+        vim_ge: vim_ge{
+            compatible = "zmk,behavior-macro";
+            #binding-cells = <0>;
+            wait-ms = <5>;
+            tap-ms = <5>;
+            bindings = <&kp G &kp E>;
+        };
 
     };
 
@@ -94,12 +110,18 @@
         rot_8_repeat_lr: rotate_8_times_left_right{
             compatible = "zmk,behavior-sensor-rotate";
             #sensor-binding-cells = <0>;
-            bindings = <&repeat_right_8>, <&repeat_left_8>;
+            bindings = <&repeat_left_8>, <&repeat_right_8>;
         };
         rot_repeat: sensor_rotate_kp{
             compatible = "zmk,behavior-sensor-rotate";
             #sensor-binding-cells = <0>;
             bindings = <&key_repeat>, <&key_repeat>;
+        };
+
+        rot_ge: rotate_e_ge{
+            compatible = "zmk,behavior-sensor-rotate";
+            #sensor-binding-cells = <0>;
+            bindings = <&vim_ge>, <&vim_e>;
         };
 
     };
@@ -119,11 +141,11 @@
 
         qwerty_layer {
             bindings = <
-                                        &kp ESC &kp N2    &kp N3   &kp N4    &kp N5                                                   &kp N6    &kp N7    &lt REP_8 N8 &kp N9    &kp DEL
-            &kp HOME     &kp GRAVE      &kp N1  &kp W     &kp E    &kp R     &kp T                                                    &kp Y     &kp U     &kp I        &kp O     &kp N0     &kp MINUS  &kp EQUAL
-            &kp END      &lt SC_TAB TAB &kp Q   &kp S     &kp D    &kp F     &kp G                                                    &kp H     &kp J     &kp K        &kp L     &kp P      &kp LBKT   &kp RBKT
-            &kp LCTRL    &kp CAPS       &kp A   &kp X     &kp C    &kp V     &kp B    &lt NUM SPACE                        &kp ENTER  &kp N     &kp M     &kp COMMA    &kp DOT   &kp SEMI   &kp SQT    &kp BSLH
-                         &kp LSHFT      &kp Z   &kp LSHFT &kp DOWN &kp LCTRL &kp LGUI &kp LALT   &lt NAV BSPC  &lt SYM ESC &kp RSHFT  &kp RCTRL &kp RCTRL &kp RGUI     &kp RCTRL &kp SLASH  &kp RSHFT 
+                                        &kp ESC &kp N2        &kp N3        &kp N4    &kp N5                                                   &kp N6    &kp N7    &lt REP_8 N8 &kp N9    &kp DEL
+            &kp HOME     &kp GRAVE      &kp N1  &lt VIM_WB W  &lt VIM_EGE E &kp R     &kp T                                                    &kp Y     &kp U     &kp I        &kp O     &kp N0     &kp MINUS  &kp EQUAL
+            &kp END      &lt SC_TAB TAB &kp Q   &kp S         &kp D         &kp F     &kp G                                                    &kp H     &kp J     &kp K        &kp L     &kp P      &kp LBKT   &kp RBKT
+            &kp LCTRL    &kp CAPS       &kp A   &kp X         &kp C         &kp V     &kp B    &lt NUM SPACE                        &kp ENTER  &kp N     &kp M     &kp COMMA    &kp DOT   &kp SEMI   &kp SQT    &kp BSLH
+                         &kp LSHFT      &kp Z   &kp LSHFT     &kp DOWN      &kp LCTRL &kp LGUI &kp LALT   &lt NAV BSPC  &lt SYM ESC &kp RSHFT  &kp RCTRL &kp RCTRL &kp RGUI     &kp RCTRL &kp SLASH  &kp RSHFT 
             >;
 
             sensor-bindings = <&rot_clk_cnt LEFT RIGHT &rot_clk_cnt DOWN UP>;
@@ -172,11 +194,11 @@
         wasd_layer {
             // permanent layer, hold esc+alt to enter double layer
             bindings = <
-                                  &kp N1    &kp N2    &kp N3    &kp N4      &kp N5                                      &kp N6    &kp N7    &lt REP_8 N8 &kp N9    &kp DEL
-            &kp ESC     &kp TAB   &kp Q     &kp W     &kp E     &kp R       &kp T                                       &kp Y     &kp U     &kp I        &kp O     &kp N0     &kp MINUS  &kp EQUAL
-            &kp GRAVE   &kp RSHFT &kp A     &kp S     &kp D     &kp F       &kp G                                       &kp H     &kp J     &kp K        &kp L     &kp P      &kp LBKT   &kp RBKT
-            &none       &kp LCTRL &kp Z     &kp X     &kp C     &kp V       &kp B     &kp SPACE              &kp ENTER  &kp N     &kp M     &kp COMMA    &kp DOT   &kp SEMI   &kp SQT    &kp BSLH 
-                        &none     &none     &none     &none     &kp LCTRL   &kp SPACE &kp  ESC  &lt SYM ESC  &kp RSHFT  &kp RCTRL &kp RCTRL &kp LEFT     &kp RIGHT &kp SLASH  &kp RSHFT   
+                                  &kp N1    &kp N2         &kp N3        &kp N4      &kp N5                                      &kp N6    &kp N7    &lt REP_8 N8 &kp N9    &kp DEL
+            &kp ESC     &kp TAB   &kp Q     &lt VIM_WB W   &lt VIM_EGE E &kp R       &kp T                                       &kp Y     &kp U     &kp I        &kp O     &kp N0     &kp MINUS  &kp EQUAL
+            &kp GRAVE   &kp RSHFT &kp A     &kp S          &kp D         &kp F       &kp G                                       &kp H     &kp J     &kp K        &kp L     &kp P      &kp LBKT   &kp RBKT
+            &none       &kp LCTRL &kp Z     &kp X          &kp C         &kp V       &kp B     &kp SPACE              &kp ENTER  &kp N     &kp M     &kp COMMA    &kp DOT   &kp SEMI   &kp SQT    &kp BSLH 
+                        &none     &none     &none          &none         &kp LCTRL   &kp SPACE &kp  ESC  &lt SYM ESC  &kp RSHFT  &kp RCTRL &kp RCTRL &kp LEFT     &kp RIGHT &kp SLASH  &kp RSHFT   
             >;
             sensor-bindings = <&rot_clk_cnt D A &rot_clk_cnt DOWN UP>;
         };
@@ -197,11 +219,11 @@
         dvorak_layer {
             // has homerow mods
             bindings = <
-                                        &kp ESC   &kp N2    &kp N3   &kp N4    &kp N5                                                   &kp N6    &kp N7    &lt REP_8 N8 &kp N9    &kp DEL
-            &kp HOME     &kp GRAVE      &kp N1    &kp COMMA &kp DOT  &kp P     &kp Y                                                    &kp F     &kp G     &kp C        &kp R     &kp N0 &kp LBKT   &kp RBKT
-            &kp END      &lt SC_TAB TAB &kp SQT   &kp O     &kp E    &kp U     &kp I                                                    &kp D     &kp H     &kp T        &kp N     &kp L  &kp SLASH  &kp EQUAL
-            &kp CAPS     &kp ESC        &kp A     &kp Q     &kp J    &kp K     &kp X    &lt NUM SPACE                        &kp ENTER  &kp B     &kp M     &kp W        &kp V     &kp S  &kp MINUS  &kp BSLH
-                         &kp LSHFT      &kp SEMI  &kp LSHFT &kp DOWN &kp LCTRL &kp LGUI &kp LALT   &lt NAV BSPC  &lt SYM ESC &kp RSHFT  &kp RCTRL &kp RCTRL &kp LEFT     &kp RIGHT &kp Z  &kp RSHFT 
+                                        &kp ESC   &kp N2    &kp N3         &kp N4    &kp N5                                                   &kp N6    &kp N7    &lt REP_8 N8 &kp N9    &kp DEL
+            &kp HOME     &kp GRAVE      &kp N1    &kp COMMA &kp DOT        &kp P     &kp Y                                                    &kp F     &kp G     &kp C        &kp R     &kp N0 &kp LBKT   &kp RBKT
+            &kp END      &lt SC_TAB TAB &kp SQT   &kp O     &lt VIM_EGE E  &kp U     &kp I                                                    &kp D     &kp H     &kp T        &kp N     &kp L  &kp SLASH  &kp EQUAL
+            &kp CAPS     &kp ESC        &kp A     &kp Q     &kp J          &kp K     &kp X    &lt NUM SPACE                        &kp ENTER  &kp B     &kp M     &lt VIM_WB W &kp V     &kp S  &kp MINUS  &kp BSLH
+                         &kp LSHFT      &kp SEMI  &kp LSHFT &kp DOWN       &kp LCTRL &kp LGUI &kp LALT   &lt NAV BSPC  &lt SYM ESC &kp RSHFT  &kp RCTRL &kp RCTRL &kp LEFT     &kp RIGHT &kp Z  &kp RSHFT 
             >;
 
             sensor-bindings = <&rot_clk_cnt LEFT RIGHT &rot_clk_cnt DOWN UP>;
@@ -209,11 +231,11 @@
 
         graphite_layer {
             bindings = <
-                                        &kp ESC &kp N2    &kp N3   &kp N4    &kp N5                                                   &kp N6    &kp N7    &lt REP_8 N8 &kp N9    &kp DEL
-            &kp HOME     &kp GRAVE      &kp N1  &kp L     &kp D    &kp W     &kp Z                                                    &kp MINUS &kp F     &kp O        &kp U     &kp N0     &kp LBKT   &kp RBKT
-            &kp END      &lt SC_TAB TAB &kp B   &kp R     &kp T    &kp S     &kp G                                                    &kp Y     &kp H     &kp A        &kp E     &kp J      &kp SEMI   &kp EQUAL
-            &kp CAPS     &kp ESC        &kp N   &kp X     &kp M    &kp C     &kp V    &lt NUM SPACE                        &kp ENTER  &kp K     &kp P     &kp DOT      &kp SQT   &kp I      &kp COMMA  &kp BSLH
-                         &kp LSHFT      &kp Q   &kp LSHFT &kp DOWN &kp LCTRL &kp LGUI &kp LALT   &lt NAV BSPC  &lt SYM ESC &kp RSHFT  &kp RCTRL &kp RCTRL &kp LEFT     &kp RIGHT &kp SLASH  &kp RSHFT 
+                                        &kp ESC &kp N2    &kp N3   &kp N4        &kp N5                                                   &kp N6    &kp N7    &lt REP_8 N8 &kp N9          &kp DEL
+            &kp HOME     &kp GRAVE      &kp N1  &kp L     &kp D    &lt VIM_WB W  &kp Z                                                    &kp MINUS &kp F     &kp O        &kp U           &kp N0     &kp LBKT   &kp RBKT
+            &kp END      &lt SC_TAB TAB &kp B   &kp R     &kp T    &kp S         &kp G                                                    &kp Y     &kp H     &kp A        &lt VIM_EGE E   &kp J      &kp SEMI   &kp EQUAL
+            &kp CAPS     &kp ESC        &kp N   &kp X     &kp M    &kp C         &kp V    &lt NUM SPACE                        &kp ENTER  &kp K     &kp P     &kp DOT      &kp SQT         &kp I      &kp COMMA  &kp BSLH
+                         &kp LSHFT      &kp Q   &kp LSHFT &kp DOWN &kp LCTRL     &kp LGUI &kp LALT   &lt NAV BSPC  &lt SYM ESC &kp RSHFT  &kp RCTRL &kp RCTRL &kp LEFT     &kp RIGHT       &kp SLASH  &kp RSHFT 
             >;
 
             sensor-bindings = <&rot_clk_cnt LEFT RIGHT &rot_clk_cnt DOWN UP>;
@@ -246,7 +268,7 @@
         mod_tap_qwerty_layer {
             bindings = <
                                         &kp ESC      &kp N2         &kp N3         &kp N4        &kp N5                                                   &kp N6        &kp N7        &lt REP_8 N8     &kp N9        &kp DEL
-            &kp HOME     &kp GRAVE      &kp N1       &kp W          &kp E          &kp R         &kp T                                                    &kp Y         &kp U         &kp I            &kp O         &kp N0          &kp MINUS  &kp EQUAL
+            &kp HOME     &kp GRAVE      &kp N1       &lt VIM_WB W   &lt VIM_EGE E  &kp R         &kp T                                                    &kp Y         &kp U         &kp I            &kp O         &kp N0          &kp MINUS  &kp EQUAL
             &kp END      &lt SC_TAB TAB &kp Q        &mthp LALT S   &mthp LCTRL D  &mthp LSHFT F &kp G                                                    &kp H         &mthp RSHFT J &mthp RCTRL K    &mthp RALT L  &kp P           &kp LBKT   &kp RBKT
             &kp CAPS     &kp ESC        &mthp LGUI A &kp X          &kp C          &kp V         &kp B    &lt NUM SPACE                        &kp ENTER  &kp N         &kp M         &kp COMMA        &kp DOT       &mthp RGUI SEMI &kp SQT    &kp BSLH
                          &kp LSHFT      &kp Z        &kp LSHFT      &kp DOWN       &kp LCTRL     &kp LGUI &kp LALT   &lt NAV BSPC  &lt SYM ESC &kp RSHFT  &kp RCTRL     &kp RCTRL     &kp LEFT         &kp RIGHT     &kp SLASH       &kp RSHFT 
@@ -262,7 +284,7 @@
                                         &kp ESC      &kp N2       &kp N3       &kp N4       &kp N5                                                   &kp N6    &kp N7        &lt REP_8 N8  &kp N9       &kp DEL
             &kp HOME     &kp GRAVE      &kp N1       &kp COMMA    &kp DOT      &kp P        &kp Y                                                    &kp F     &kp G         &kp C         &kp R        &kp N0       &kp LBKT   &kp RBKT
             &kp END      &lt SC_TAB TAB &kp SQT      &mthp LALT O &mthp LALT E &mthp LALT U &kp I                                                    &kp D     &mthp RSHFT H &mthp RCTRL T &mthp RALT N &kp L        &kp SLASH  &kp EQUAL
-            &kp CAPS     &kp ESC        &mthp LGUI A &kp Q        &kp J        &kp K        &kp X    &lt NUM SPACE                        &kp ENTER  &kp B     &kp M         &kp W         &kp V        &mthp RGUI S &kp MINUS  &kp BSLH
+            &kp CAPS     &kp ESC        &mthp LGUI A &kp Q        &kp J        &kp K        &kp X    &lt NUM SPACE                        &kp ENTER  &kp B     &kp M         &lt VIM_WB W  &kp V        &mthp RGUI S &kp MINUS  &kp BSLH
                          &kp LSHFT      &kp SEMI     &kp LSHFT    &kp DOWN     &kp LCTRL    &kp LGUI &kp LALT   &lt NAV BSPC  &lt SYM ESC &kp RSHFT  &kp RCTRL &kp RCTRL     &kp LEFT      &kp RIGHT    &kp Z        &kp RSHFT 
             >;
 
@@ -272,13 +294,38 @@
         mod_tap_graphite_layer {
             bindings = <
                                         &kp ESC       &kp N2          &kp N3         &kp N4          &kp N5                                                   &kp N6    &kp N7          &lt REP_8 N8       &kp N9          &kp DEL
-            &kp HOME     &kp GRAVE      &kp N1        &kp L           &kp D          &kp W           &kp Z                                                    &kp MINUS &kp F           &kp O              &kp U           &kp N0           &kp LBKT   &kp RBKT
-            &kp END      &lt SC_TAB TAB &kp B         &mthp LSHFT R   &kp T          &kp S           &kp G                                                    &kp Y     &kp H           &kp A              &kp E           &kp J            &kp SEMI   &kp EQUAL
+            &kp HOME     &kp GRAVE      &kp N1        &kp L           &kp D          &lt VIM_WB W    &kp Z                                                    &kp MINUS &kp F           &kp O              &kp U           &kp N0           &kp LBKT   &kp RBKT
+            &kp END      &lt SC_TAB TAB &kp B         &mthp LSHFT R   &kp T          &kp S           &kp G                                                    &kp Y     &kp H           &kp A              &lt VIM_EGE E   &kp J            &kp SEMI   &kp EQUAL
             &kp CAPS     &kp ESC        &mthp LSHFT N &kp X           &kp M          &kp C           &kp V    &lt NUM SPACE                        &kp ENTER  &kp K     &kp P           &kp DOT            &kp SQT         &kp I            &kp COMMA  &kp BSLH
                          &kp LSHFT      &kp Q         &kp LSHFT       &kp DOWN       &kp LCTRL       &kp LGUI &kp LALT   &lt NAV BSPC  &lt SYM ESC &kp RSHFT  &kp RCTRL &kp RCTRL       &kp LEFT           &kp RIGHT       &kp SLASH        &kp RSHFT 
             >;
 
             sensor-bindings = <&rot_clk_cnt LEFT RIGHT &rot_clk_cnt DOWN UP>;
         };
+
+        vim_wb_layer {
+            bindings = <
+                              &trans &trans &trans &trans &trans                             &trans &trans &trans &trans &trans
+                &trans &trans &trans &trans &trans &trans &trans                             &trans &trans &trans &trans &trans &trans &trans
+                &trans &trans &trans &trans &trans &trans &trans                             &trans &trans &trans &trans &trans &trans &trans
+                &trans &trans &trans &trans &trans &trans &trans &trans               &trans &trans &trans &trans &trans &trans &trans &trans
+                       &trans &trans &trans &trans &trans &trans &trans &trans &trans &trans &trans &trans &trans &trans &trans &trans
+            >;
+
+            sensor-bindings = <&rot_clk_cnt B W &rot_clk_cnt RBRC LBRC>;
+        };
+
+        vim_ege_layer {
+            bindings = <
+                              &trans &trans &trans &trans &trans                             &trans &trans &trans &trans &trans
+                &trans &trans &trans &trans &trans &trans &trans                             &trans &trans &trans &trans &trans &trans &trans
+                &trans &trans &trans &trans &trans &trans &trans                             &trans &trans &trans &trans &trans &trans &trans
+                &trans &trans &trans &trans &trans &trans &trans &trans               &trans &trans &trans &trans &trans &trans &trans &trans
+                       &trans &trans &trans &trans &trans &trans &trans &trans &trans &trans &trans &trans &trans &trans &trans &trans
+            >;
+
+            sensor-bindings = <&rot_ge &rot_clk_cnt RBRC LBRC>;
+        };
+
     };
 };
