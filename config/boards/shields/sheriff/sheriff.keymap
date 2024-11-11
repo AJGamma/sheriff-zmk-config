@@ -277,6 +277,7 @@
             sensor-bindings = <&rot_clk_cnt LEFT RIGHT &rot_clk_cnt DOWN UP>;
         };
 
+        mod_tap_dvorak_layer {
             // has homerow mods
             bindings = <
                                         &kp ESC      &kp N2       &kp N3       &kp N4       &kp N5                                                   &kp N6    &kp N7        &lt REP_8 N8  &kp N9       &kp DEL
