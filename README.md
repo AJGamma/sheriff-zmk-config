@@ -1,6 +1,7 @@
 ## Sheriff ZMK Config
 
 ### Future Work
+
 - [ ] Mouse emulation
     - [ ] Mouse clicks and scroll
     - [ ] Basic mouse movement
