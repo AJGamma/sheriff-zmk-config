@@ -145,7 +145,7 @@
             &kp HOME     &kp GRAVE      &kp N1  &lt VIM_WB W  &lt VIM_EGE E &kp R     &kp T                                                    &kp Y     &kp U     &kp I        &kp O     &kp N0     &kp MINUS  &kp EQUAL
             &kp END      &lt SC_TAB TAB &kp Q   &kp S         &kp D         &kp F     &kp G                                                    &kp H     &kp J     &kp K        &kp L     &kp P      &kp LBKT   &kp RBKT
             &kp LCTRL    &kp CAPS       &kp A   &kp X         &kp C         &kp V     &kp B    &lt NUM SPACE                        &kp ENTER  &kp N     &kp M     &kp COMMA    &kp DOT   &kp SEMI   &kp SQT    &kp BSLH
-                         &kp LSHFT      &kp Z   &kp LSHFT     &kp DOWN      &kp LCTRL &kp LGUI &kp LALT   &lt NAV ESC  &lt SYM BSPC &kp RSHFT  &kp RCTRL &kp RCTRL &kp RGUI     &kp RCTRL &kp SLASH  &kp RSHFT 
+                         &kp LSHFT      &kp Z   &kp LSHFT     &kp DOWN      &kp LCTRL &kp LGUI &kp LALT   &lt NAV BSPC  &lt SYM ESC &kp RSHFT  &kp RCTRL &kp RCTRL &kp RGUI     &kp RCTRL &kp SLASH  &kp RSHFT 
             >;
 
             sensor-bindings = <&rot_clk_cnt LEFT RIGHT &rot_clk_cnt DOWN UP>;
@@ -223,7 +223,7 @@
             &kp HOME     &kp GRAVE      &kp N1    &kp COMMA &kp DOT        &kp P     &kp Y                                                    &kp F     &kp G     &kp C        &kp R     &kp N0 &kp LBKT   &kp RBKT
             &kp END      &lt SC_TAB TAB &kp SQT   &kp O     &lt VIM_EGE E  &kp U     &kp I                                                    &kp D     &kp H     &kp T        &kp N     &kp L  &kp SLASH  &kp EQUAL
             &kp CAPS     &kp ESC        &kp A     &kp Q     &kp J          &kp K     &kp X    &lt NUM SPACE                        &kp ENTER  &kp B     &kp M     &lt VIM_WB W &kp V     &kp S  &kp MINUS  &kp BSLH
-                         &kp LSHFT      &kp SEMI  &kp LSHFT &kp DOWN       &kp LCTRL &kp LGUI &kp LALT   &lt NAV ESC  &lt SYM BSPC &kp RSHFT  &kp RCTRL &kp RCTRL &kp LEFT     &kp RIGHT &kp Z  &kp RSHFT 
+                         &kp LSHFT      &kp SEMI  &kp LSHFT &kp DOWN       &kp LCTRL &kp LGUI &kp LALT   &lt NAV BSPC  &lt SYM ESC &kp RSHFT  &kp RCTRL &kp RCTRL &kp LEFT     &kp RIGHT &kp Z  &kp RSHFT 
             >;
 
             sensor-bindings = <&rot_clk_cnt LEFT RIGHT &rot_clk_cnt DOWN UP>;
@@ -235,7 +235,7 @@
             &kp HOME     &kp GRAVE      &kp N1  &kp L     &kp D    &lt VIM_WB W  &kp Z                                                    &kp MINUS &kp F     &kp O        &kp U           &kp N0     &kp LBKT   &kp RBKT
             &kp END      &lt SC_TAB TAB &kp B   &kp R     &kp T    &kp S         &kp G                                                    &kp Y     &kp H     &kp A        &lt VIM_EGE E   &kp J      &kp SEMI   &kp EQUAL
             &kp CAPS     &kp ESC        &kp N   &kp X     &kp M    &kp C         &kp V    &lt NUM SPACE                        &kp ENTER  &kp K     &kp P     &kp DOT      &kp SQT         &kp I      &kp COMMA  &kp BSLH
-                         &kp LSHFT      &kp Q   &kp LSHFT &kp DOWN &kp LCTRL     &kp LGUI &kp LALT   &lt NAV ESC  &lt SYM BSPC &kp RSHFT  &kp RCTRL &kp RCTRL &kp LEFT     &kp RIGHT       &kp SLASH  &kp RSHFT 
+                         &kp LSHFT      &kp Q   &kp LSHFT &kp DOWN &kp LCTRL     &kp LGUI &kp LALT   &lt NAV BSPC  &lt SYM ESC &kp RSHFT  &kp RCTRL &kp RCTRL &kp LEFT     &kp RIGHT       &kp SLASH  &kp RSHFT 
             >;
 
             sensor-bindings = <&rot_clk_cnt LEFT RIGHT &rot_clk_cnt DOWN UP>;
@@ -271,7 +271,7 @@
             &kp HOME     &kp GRAVE      &kp N1       &lt VIM_WB W   &lt VIM_EGE E  &kp R         &kp T                                                    &kp Y         &kp U         &kp I            &kp O         &kp N0          &kp MINUS  &kp EQUAL
             &kp END      &lt SC_TAB TAB &kp Q        &mthp LALT S   &mthp LCTRL D  &mthp LSHFT F &kp G                                                    &kp H         &mthp RSHFT J &mthp RCTRL K    &mthp RALT L  &kp P           &kp LBKT   &kp RBKT
             &kp CAPS     &kp ESC        &mthp LGUI A &kp X          &kp C          &kp V         &kp B    &lt NUM SPACE                        &kp ENTER  &kp N         &kp M         &kp COMMA        &kp DOT       &mthp RGUI SEMI &kp SQT    &kp BSLH
-                         &kp LSHFT      &kp Z        &kp LSHFT      &kp DOWN       &kp LCTRL     &kp LGUI &kp LALT   &lt NAV ESC  &lt SYM BSPC &kp RSHFT  &kp RCTRL     &kp RCTRL     &kp LEFT         &kp RIGHT     &kp SLASH       &kp RSHFT 
+                         &kp LSHFT      &kp Z        &kp LSHFT      &kp DOWN       &kp LCTRL     &kp LGUI &kp LALT   &lt NAV BSPC  &lt SYM ESC &kp RSHFT  &kp RCTRL     &kp RCTRL     &kp LEFT         &kp RIGHT     &kp SLASH       &kp RSHFT 
             >;
 
             sensor-bindings = <&rot_clk_cnt LEFT RIGHT &rot_clk_cnt DOWN UP>;
@@ -284,7 +284,7 @@
             &kp HOME     &kp GRAVE      &kp N1       &kp COMMA    &kp DOT      &kp P        &kp Y                                                    &kp F     &kp G         &kp C         &kp R        &kp N0       &kp LBKT   &kp RBKT
             &kp END      &lt SC_TAB TAB &kp SQT      &mthp LALT O &mthp LALT E &mthp LALT U &kp I                                                    &kp D     &mthp RSHFT H &mthp RCTRL T &mthp RALT N &kp L        &kp SLASH  &kp EQUAL
             &kp CAPS     &kp ESC        &mthp LGUI A &kp Q        &kp J        &kp K        &kp X    &lt NUM SPACE                        &kp ENTER  &kp B     &kp M         &lt VIM_WB W  &kp V        &mthp RGUI S &kp MINUS  &kp BSLH
-                         &kp LSHFT      &kp SEMI     &kp LSHFT    &kp DOWN     &kp LCTRL    &kp LGUI &kp LALT   &lt NAV ESC  &lt SYM BSPC &kp RSHFT  &kp RCTRL &kp RCTRL     &kp LEFT      &kp RIGHT    &kp Z        &kp RSHFT 
+                         &kp LSHFT      &kp SEMI     &kp LSHFT    &kp DOWN     &kp LCTRL    &kp LGUI &kp LALT   &lt NAV BSPC  &lt SYM ESC &kp RSHFT  &kp RCTRL &kp RCTRL     &kp LEFT      &kp RIGHT    &kp Z        &kp RSHFT 
             >;
 
             sensor-bindings = <&rot_clk_cnt LEFT RIGHT &rot_clk_cnt DOWN UP>;
@@ -296,7 +296,7 @@
             &kp HOME     &kp GRAVE      &kp N1        &kp L           &kp D          &lt VIM_WB W    &kp Z                                                    &kp MINUS &kp F           &kp O              &kp U           &kp N0           &kp LBKT   &kp RBKT
             &kp END      &lt SC_TAB TAB &kp B         &mthp LSHFT R   &kp T          &kp S           &kp G                                                    &kp Y     &kp H           &kp A              &lt VIM_EGE E   &kp J            &kp SEMI   &kp EQUAL
             &kp CAPS     &kp ESC        &mthp LSHFT N &kp X           &kp M          &kp C           &kp V    &lt NUM SPACE                        &kp ENTER  &kp K     &kp P           &kp DOT            &kp SQT         &kp I            &kp COMMA  &kp BSLH
-                         &kp LSHFT      &kp Q         &kp LSHFT       &kp DOWN       &kp LCTRL       &kp LGUI &kp LALT   &lt NAV ESC  &lt SYM BSPC &kp RSHFT  &kp RCTRL &kp RCTRL       &kp LEFT           &kp RIGHT       &kp SLASH        &kp RSHFT 
+                         &kp LSHFT      &kp Q         &kp LSHFT       &kp DOWN       &kp LCTRL       &kp LGUI &kp LALT   &lt NAV BSPC  &lt SYM ESC &kp RSHFT  &kp RCTRL &kp RCTRL       &kp LEFT           &kp RIGHT       &kp SLASH        &kp RSHFT 
             >;
 
             sensor-bindings = <&rot_clk_cnt LEFT RIGHT &rot_clk_cnt DOWN UP>;
